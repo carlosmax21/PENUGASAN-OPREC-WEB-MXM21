@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <title>Random Quote generator</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
+
+            body {
+                font-family: helvetica;
+                font-size: 20px;
+                background-color: black;
+              }
+
+            .container {
+                margin: 150px auto;
+                width: 500px;
+                display: flex;
+                flex-direction: column;
+              }
+
+            .box {
+              padding: 30px 20px;
+              margin-bottom: 20px;
+              background-color: white;
+              border-radius: 25px;
+              }
+
+            #author {
+              float: right;
+              font-weight: bold;
+              font-style: italic;
+              margin-top: 10px;
+              font-size: 14px; 
+              color: grey;
+            }
+
+            .btn {
+                align-self: center;
+                padding: 15px 20px;
+              }
+    </style>
+    </head>
+    <body onload="getQuote()">
+        <h1 style="color: white; text-align: center; padding-top: 20px;">Random Quote Generator</h1>
+        <div class="container">
+            <div class="box">
+              <p id="quote"></p>
+              <br>
+              <p id="author"></p>
+            </div>
+            <button id="quotebtn" class="btn btn-light">New Quote</button>
+            <br>
+            <button id="tweetbtn" class="btn btn-light">Tweet</button>
+          </div>
+
+          <script>
+            const api = "https://api.quotable.io/random";
+            const quote = document.getElementById("quote");
+            const author = document.getElementById("author");
+            const qbtn = document.getElementById("quotebtn");
+            const tbtn = document.getElementById("tweetbtn");
+
+            qbtn.addEventListener("click", getQuote);
+
+            function getQuote() {
+              fetch(api).then((res) => res.json()).then((json) => {
+                quote.innerHTML = `"${json.content}"`;
+                author.innerHTML = `- ${json.author}`;
+              });
+            }
+
+            function tweet()
+            {
+              const url = "https://twitter.com/intent/tweet?text="
+              window.open(url + quote.innerHTML + author.innerHTML, 'blank');
+            }
+
+            tbtn.addEventListener("click", tweet);
+        </script>
+    </body>
+</html>
