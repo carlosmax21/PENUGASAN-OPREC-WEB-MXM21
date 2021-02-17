@@ -1,6 +1,5 @@
 .wrapper {
     background-color: #d0d0d0;
-    width: 1000px;
     margin: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -44,6 +43,7 @@
     width: 50%;
     height: 100%;
     align-self: stretch;
+    text-align: center;
 }
 
 .box2
@@ -52,6 +52,7 @@
     height: 50%;
     width: 100%;
     align-self: stretch;
+    text-align: center;
 }
 
 .box3
@@ -60,6 +61,7 @@
     height: 100%;
     width: 50%;
     align-self: stretch;
+    text-align: center;
 }
 
 .box4
@@ -68,6 +70,7 @@
     height: 50%;
     width: 100%;
     align-self: stretch;
+    text-align: center;
 }
 
 .box5
@@ -77,4 +80,5 @@
     height: 80%;
     width: 100%;
     align-self: stretch;
+    text-align: center;
 }
